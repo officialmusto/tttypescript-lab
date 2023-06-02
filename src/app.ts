@@ -29,24 +29,38 @@ function init(): void {
 }
 
 function render(): void {
-  
+  updateBoard(), updateMessage()
+}
+
+function handleCLick(evt: MouseEvent): void {
+  if (!(evt.target instanceof HTMLElement)) return
+  const sqIdx = parseInt(evt.target.id.replace('sq', ''))
+  if (isNaN(sqIdx) || board[sqIdx] || hasWinner) return
+  switchPTurn()
+  render()
+}
+
+function checkTie(): void {
+  if (board.includes(0)) return
+  hasTie = true
 }
 
 function updateBoard(): void {
-
-}
-function handleCLick(): void {
 
 }
 
 function placePiece(): void {
 
 }
-function checkTie(): void {
+
+function switchPTurn(): void {
+
+}
+function updateMessage(): void {
 
 }
 
-function switchPTurn(): void {
+function checkForWinner(): void {
 
 }
 

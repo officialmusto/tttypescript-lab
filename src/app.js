@@ -20,16 +20,31 @@ function init() {
     render();
 }
 function render() {
+    updateBoard(), updateMessage();
+}
+function handleCLick(evt) {
+    if (!(evt.target instanceof HTMLElement))
+        return;
+    const sqIdx = parseInt(evt.target.id.replace('sq', ''));
+    if (isNaN(sqIdx) || board[sqIdx] || hasWinner)
+        return;
+    switchPTurn();
+    render();
+}
+function checkTie() {
+    if (board.includes(0))
+        return;
+    hasTie = true;
 }
 function updateBoard() {
 }
-function handleCLick() {
-}
 function placePiece() {
 }
-function checkTie() {
-}
 function switchPTurn() {
+}
+function updateMessage() {
+}
+function checkForWinner() {
 }
 // --------- INITIALIZER ---------
 init();
