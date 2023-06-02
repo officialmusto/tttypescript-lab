@@ -12,12 +12,20 @@ const winningCombos: (number[])[] = [
 
 // --------- CACHED ELEMENTS ---------
 const squares = document.querySelectorAll<HTMLDivElement>('.sqr')
-
+const message = document.querySelector<HTMLHeadingElement>('#message')!
+const reset = document.querySelector('button') as HTMLButtonElement
 
 
 
 // --------- FUNCTIONS ---------
 
+function init(): void {
+  board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+  turn = 1
+  hasWinner = false
+  hasTie = false
+
+}
 
 
 

@@ -8,5 +8,13 @@ const winningCombos = [
 ];
 // --------- CACHED ELEMENTS ---------
 const squares = document.querySelectorAll('.sqr');
+const message = document.querySelector('#message');
+const reset = document.querySelector('button');
 // --------- FUNCTIONS ---------
+function init() {
+    board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    turn = 1;
+    hasWinner = false;
+    hasTie = false;
+}
 // --------- INITIALIZER ---------
