@@ -11,7 +11,7 @@ const winningCombos: (number[])[] = [
 ]
 
 // --------- CACHED ELEMENTS ---------
-
+const squares = document.querySelectorAll<HTMLDivElement>('.sqr')
 
 
 

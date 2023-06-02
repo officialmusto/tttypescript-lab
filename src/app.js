@@ -7,5 +7,6 @@ const winningCombos = [
     [0, 4, 8], [2, 4, 6]
 ];
 // --------- CACHED ELEMENTS ---------
+const squares = document.querySelectorAll('.sqr');
 // --------- FUNCTIONS ---------
 // --------- INITIALIZER ---------
