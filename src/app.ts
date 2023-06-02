@@ -24,10 +24,31 @@ function init(): void {
   turn = 1
   hasWinner = false
   hasTie = false
+  updateBoard()
+  render()
+}
+
+function render(): void {
+  
+}
+
+function updateBoard(): void {
+
+}
+function handleCLick(): void {
 
 }
 
+function placePiece(): void {
 
+}
+function checkTie(): void {
+
+}
+
+function switchPTurn(): void {
+
+}
 
 // --------- INITIALIZER ---------
-
+init()

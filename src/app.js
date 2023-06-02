@@ -16,5 +16,20 @@ function init() {
     turn = 1;
     hasWinner = false;
     hasTie = false;
+    updateBoard();
+    render();
+}
+function render() {
+}
+function updateBoard() {
+}
+function handleCLick() {
+}
+function placePiece() {
+}
+function checkTie() {
+}
+function switchPTurn() {
 }
 // --------- INITIALIZER ---------
+init();
