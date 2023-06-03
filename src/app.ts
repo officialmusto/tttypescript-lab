@@ -1,7 +1,7 @@
 // --------- VARIABLES ---------
-let board: number[], 
-turn: number, 
-hasWinner: boolean, 
+let board: number[]
+let turn: number,
+hasWinner: boolean,
 hasTie: boolean
 
 const winningCombos: (number[])[] = [
@@ -14,17 +14,26 @@ const winningCombos: (number[])[] = [
 const squares = document.querySelectorAll<HTMLDivElement>('.sqr')
 const message = document.querySelector<HTMLHeadingElement>('#message')!
 const reset = document.querySelector('button') as HTMLButtonElement
+const boardEl = document.querySelector<HTMLElement>('.board')!
 
 
+// -------- EVENT LISTENERS ---------
+
+
+squares.forEach(function square(idx): void {
+  idx.addEventListener('click', handleClick)
+})
+
+reset.addEventListener('click', init)
 
 // --------- FUNCTIONS ---------
+init()
 
 function init(): void {
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
   turn = 1
   hasWinner = false
   hasTie = false
-  updateBoard()
   render()
 }
 
@@ -32,12 +41,15 @@ function render(): void {
   updateBoard(), updateMessage()
 }
 
-function handleCLick(evt: MouseEvent): void {
+function handleClick(evt: MouseEvent): void {
   if (!(evt.target instanceof HTMLElement)) return
-  const sqIdx = parseInt(evt.target.id.replace('sq', ''))
-  if (isNaN(sqIdx) || board[sqIdx] || hasWinner) return
-  switchPTurn()
-  render()
+    const sqIdx = parseInt(evt.target.id.replace('sq', ''))
+    if (isNaN(sqIdx) || board[sqIdx] || hasWinner) return
+    placePiece(sqIdx)
+    checkTie()
+    checkForWinner()
+    switchPTurn()
+    render()
 }
 
 function checkTie(): void {
@@ -51,12 +63,14 @@ function updateBoard(): void {
       squares[idx].textContent = '❌'
     } else if (current === -1) {
       squares[idx].textContent = '⭕️'
+    } else {
+      squares[idx].textContent = ''
     }
   })
 }
 
-function placePiece(): void {
-
+function placePiece(idx: number): void {
+board[idx] = turn
 }
 
 function switchPTurn(): void {
@@ -66,12 +80,19 @@ function switchPTurn(): void {
 function updateMessage(): void {
   if (!hasWinner && !hasTie) {
     message.textContent = `${turn === 1 ? '❌' : '⭕'}, MAKE YOUR MOVE.`
+  } else if (!hasWinner && !hasTie) {
+    message.textContent = 'TIE.'
+  } else {
+    message.textContent = `${turn === 1 ? '❌' : '⭕'} WON.`
   }
 }
 
 function checkForWinner(): void {
-
+  winningCombos.forEach(combo => {
+    if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]]) === 3) {
+      hasWinner = true
+    }
+  })
 }
 
 // --------- INITIALIZER ---------
-init()
