@@ -60,10 +60,13 @@ function placePiece(): void {
 }
 
 function switchPTurn(): void {
-
+  if (hasWinner) return
+  turn *= -1
 }
 function updateMessage(): void {
-
+  if (!hasWinner && !hasTie) {
+    message.textContent = `${turn === 1 ? '❌' : '⭕'}, MAKE YOUR MOVE.`
+  }
 }
 
 function checkForWinner(): void {

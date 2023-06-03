@@ -49,8 +49,14 @@ function updateBoard() {
 function placePiece() {
 }
 function switchPTurn() {
+    if (hasWinner)
+        return;
+    turn *= -1;
 }
 function updateMessage() {
+    if (!hasWinner && !hasTie) {
+        message.textContent = `${turn === 1 ? '❌' : '⭕'}, MAKE YOUR MOVE.`;
+    }
 }
 function checkForWinner() {
 }
