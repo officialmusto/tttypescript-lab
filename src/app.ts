@@ -46,7 +46,13 @@ function checkTie(): void {
 }
 
 function updateBoard(): void {
-
+  board.forEach((current, idx) => {
+    if (current === 1) {
+      squares[idx].textContent = '❌'
+    } else if (current === -1) {
+      squares[idx].textContent = '⭕️'
+    }
+  })
 }
 
 function placePiece(): void {

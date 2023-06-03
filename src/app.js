@@ -37,6 +37,14 @@ function checkTie() {
     hasTie = true;
 }
 function updateBoard() {
+    board.forEach((current, idx) => {
+        if (current === 1) {
+            squares[idx].textContent = '❌';
+        }
+        else if (current === -1) {
+            squares[idx].textContent = '⭕️';
+        }
+    });
 }
 function placePiece() {
 }
